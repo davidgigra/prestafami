@@ -50,7 +50,7 @@
             <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item dropdown">
                     <a class="nav-link link text-black display-4" href="index.html#header2-c"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
                         Servicios</a>
-                </li><li class="nav-item"><a class="nav-link link text-black display-4" href="index.html#form4-e"><span class="mbri-pin mbr-iconfont mbr-iconfont-btn"></span>Contáctenos</a></li><li class="nav-item"><a class="nav-link link text-black display-4"><span class="mbri-credit-card mbr-iconfont mbr-iconfont-btn"></span>Inicio Administrador</a></li></ul>
+                </li><li class="nav-item"><a class="nav-link link text-black display-4" href="index.html#form4-e"><span class="mbri-pin mbr-iconfont mbr-iconfont-btn"></span>Contáctenos</a></li><li class="nav-item"><a class="nav-link link text-black  display-4" href="{{Route('login')}}"><span class="mbri-credit-card mbr-iconfont mbr-iconfont-btn"></span>Inicio Administrador</a></li></ul>
             
         </div>
     </nav>

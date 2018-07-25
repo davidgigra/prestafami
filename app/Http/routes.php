@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('logout', function () {
-    return "estas fuera";
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin')->name('login');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout')->name('logout');
+
+Route::get('home', function () {
+    return view('home');
 });

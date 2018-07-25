@@ -14,7 +14,11 @@ class client extends Model
     }
 
     public function data(){
-    	return this->hasOne('App\data');
+    	return $this->belongsTo('App\data');
+    }
+
+    public function guarantor(){
+    	return $this->belongsTo('App\guarantor');
     }
     
 }
