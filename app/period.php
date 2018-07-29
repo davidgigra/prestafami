@@ -8,9 +8,4 @@ class period extends Model
 {
     protected $table = "periods";
     protected $fillable = ["name"];
-
-    public function credits(){
-    	return $this->hasMany('App\credit');
-    }
-
 }

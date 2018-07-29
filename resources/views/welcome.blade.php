@@ -50,7 +50,7 @@
             <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item dropdown">
                     <a class="nav-link link text-black display-4" href="index.html#header2-c"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
                         Servicios</a>
-                </li><li class="nav-item"><a class="nav-link link text-black display-4" href="index.html#form4-e"><span class="mbri-pin mbr-iconfont mbr-iconfont-btn"></span>Contáctenos</a></li><li class="nav-item"><a class="nav-link link text-black  display-4" href="{{Route('login')}}"><span class="mbri-credit-card mbr-iconfont mbr-iconfont-btn"></span>Inicio Administrador</a></li></ul>
+                </li><li class="nav-item"><a class="nav-link link text-black display-4" href="index.html#form4-e"><span class="mbri-pin mbr-iconfont mbr-iconfont-btn"></span>Contáctenos</a></li><li class="nav-item"><a class="nav-link link text-black display-4" href="{{Route('login')}}"><span class="mbri-credit-card mbr-iconfont mbr-iconfont-btn"></span>Inicio Administrador</a></li></ul>
             
         </div>
     </nav>
@@ -74,6 +74,9 @@
     </div>
     
 </section>
+
+
+
 
 <section class="cid-qUuOmpimCE mbr-fullscreen" id="header2-c">
 
@@ -119,7 +122,6 @@
     </div>
     
 </section>
-
 <section class="mbr-section form4 cid-qUvPBTY6Z8" id="form4-e">
 
     
@@ -143,9 +145,9 @@
                         <p class="mbr-text align-left mbr-fonts-style display-7">Dirección: Cra 8 # 18 - 60 oficina 601<br>Teléfono:&nbsp;3136149377<br>Correo:&nbsp;cooperativaprestafami@gmail.com</p>
                     </div>
                 </div>
-                <div data-form-type="formoid">
-                    <div data-form-alert="" hidden="">¡Gracias Por Completar El Formulario!</div>
-                    <form class="block mbr-form" action="https://mobirise.com/" method="post" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="wOsizaT7YI7BMfsrFLWZeKwZaJtEqXUh4OhGcwF7LzzXHIsErxm0YvVdEb0sdIRZ6mFr3zXAzM+7E0Xrk0VocvyK0OEMqjyDDqvh4fM0c4xyimU6tP5V5knfDqQwEroL" data-form-field="Email">
+
+                  
+                    <form class="block mbr-form" action="enviar2.php" method="POST" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true"  data-form-field="Email">
                         <div class="row">
                             <div class="col-md-6 multi-horizontal" data-for="name">
                                 <input type="text" class="form-control input" name="nombre" data-form-field="Name" placeholder="Nombre" required="" id="name-form4-e">
@@ -159,7 +161,7 @@
                             <div class="col-md-12" data-for="message">
                                 <textarea class="form-control input" name="mensaje" rows="3" data-form-field="Message" placeholder="Mensaje" style="resize:none" id="message-form4-e"></textarea>
                             </div>
-                            <div class="input-group-btn col-md-12" style="margin-top: 10px;"><button href="" type="submit" class="btn btn-primary btn-form display-4">Enviar Mensaje</button></div>
+                            <div class="input-group-btn col-md-12" style="margin-top: 10px;"><button href="" type="submit" name="enviar" class="btn btn-primary btn-form display-4">Enviar Mensaje</button></div>
                         </div>
                     </form>
                 </div>
@@ -167,6 +169,7 @@
         </div>
     </div>
 </section>
+
 
 
   <script src="assets/web/assets/jquery/jquery.min.js"></script>

@@ -15,11 +15,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin')->name('login');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout')->name('logout');
 
-Route::get('home', function () {
-    return view('home');
-});
+// Authentication routes...
+Route::get('login', 'Auth\AuthController@getLogin')->name('login');
+Route::post('login', 'Auth\AuthController@postLogin')->name('login');
+Route::get('logout', 'Auth\AuthController@getLogout')->name('logout');
+Route::get('home', 'HomeController@index')->name('home');
+
+Route::get('CrearPersona', function () {
+    return view('crearPersona');
+})->name('CrearPersona');
+
+Route::get('simularCredito', function () {
+    return view('simuladorCredito');
+})->name('simularCredito');
+
+
+
+
+
+

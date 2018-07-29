@@ -5,11 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{('Iniciar Sesión') }}</div>
+                <div class="card-header">{{ ('Iniciar Sesión') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ Route('login') }}">
-                        {!! csrf_field() !!}
+                    <form method="POST" action="{{ route('login') }}">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ ('E-Mail ') }}</label>
@@ -52,10 +52,11 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ ('Iniciar Sesión') }}
+                                    {{('Iniciar Sesión') }}
+
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('login') }}">
+                                <a class="btn btn-link" >
                                     {{ ('He olvidado mi contraseña') }}
                                 </a>
                             </div>

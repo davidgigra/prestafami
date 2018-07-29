@@ -39,6 +39,12 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    protected $loginPath = '/login';
+    protected $redirectPath = '/home';
+
+
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
