@@ -22,15 +22,9 @@ Route::post('login', 'Auth\AuthController@postLogin')->name('login');
 Route::get('logout', 'Auth\AuthController@getLogout')->name('logout');
 Route::get('home', 'HomeController@index')->name('home');
 
-Route::get('CrearPersona', function () {
-    return view('crearPersona');
-})->name('CrearPersona');
-
-Route::get('simularCredito', function () {
-    return view('simuladorCredito');
-})->name('simularCredito');
-
-
+Route::get('crearP', function () {
+    return view('crearP');
+})->name('crearP');
 
 
 

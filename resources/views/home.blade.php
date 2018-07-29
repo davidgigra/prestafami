@@ -71,8 +71,9 @@ function myFunction() {
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+    ta = tr[i].getElementsByTagName("td")[1];
+    if (td||ta) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1||ta.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
@@ -96,7 +97,16 @@ function myFunction() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;}
           </script>
+
 </div>
+         <footer class="sticky-footer">
+      <div class="container bg-light">
+        <div class="text-center">
+          <small>COOPERATIVA MULTIACTIVA PARA El APOYO FAMILIAR</small>
+        </div>
+      </div>
+
+    </footer>
 @endsection
 
   

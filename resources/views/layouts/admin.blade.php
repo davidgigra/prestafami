@@ -92,6 +92,8 @@ body {
   .sidenav {padding-top: 150px;}
   .sidenav a {font-size: 18px;}
 }
+
+
 </style>
 
 
@@ -114,7 +116,7 @@ body {
           </a>
         </li>
   <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-          <a href="{{route('simularCredito')}}">
+          <a href="simuladorC">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">Simular Credito</span>
           </a>
@@ -139,7 +141,7 @@ body {
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="{{route('CrearPersona')}}">Crear Perfil</a>
+              <a href="crearP">Crear Perfil</a>
             </li>
             <li>
               <a href="cards.html">Actualizar Perfil</a>
@@ -168,6 +170,13 @@ body {
            </li>
           </ul>
           </li>
+
+           <li class="nav-item" data-toggle="tooltip" data-placement="right" >
+          <a class="nav-link" href="tables.html">
+            <i class="fa fa-fw fa-dollar"></i>
+            <span class="nav-link-text">Opciones</span>
+          </a>
+        </li>
 </div>
 
 
@@ -187,27 +196,22 @@ function closeNav() {
 
 
   <!-- ALERTA DE MESSAGES------------------------------------------------------------------------>
+
+
+  <!--Opciones Salir/Cambiar clave-->
+      
+
       <ul class="navbar-nav ml-auto">
-       
-        
-        
-        <li class="nav-item">
+          <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Salir</a>
         </li>
       </ul>
   </nav>
-
+ 
   @yield('utility')
 
-     <footer class="sticky-footer">
-      <div class="container bg-light">
-        <div class="text-center">
-          <small>COOPERATIVA MULTIACTIVA PARA El APOYO FAMILIAR</small>
-        </div>
-      </div>
-
-    </footer>
+  
 
 </body>
 
@@ -224,8 +228,10 @@ function closeNav() {
           <div class="modal-body"> Seleccione "Salir" para finalizar su sesión actual.</div>
           <div class="modal-footer">
             <button class="btn btn-primary" type="button" data-dismiss="modal">Cancelar</button>
-            <a class="btn btn-danger" href="{{ route('logout') }}">{{(' Salir ') }}</a>
-          </div>
+            <a class="btn btn-danger" href="{{ route('logout') }}">
+                                        {{(' Salir ') }}
+                                    </a>
+                                </div>
              
           </div>
         </div>
