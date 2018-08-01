@@ -1,0 +1,1 @@
+recupera tu contraseña aqui ->  {{url('restablecerContrasena/'.$token)}}

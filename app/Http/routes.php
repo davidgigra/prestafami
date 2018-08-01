@@ -15,16 +15,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 // Authentication routes...
 Route::get('login', 'Auth\AuthController@getLogin')->name('login');
 Route::post('login', 'Auth\AuthController@postLogin')->name('login');
 Route::get('logout', 'Auth\AuthController@getLogout')->name('logout');
 Route::get('home', 'HomeController@index')->name('home');
 
-Route::get('crearP', function () {
-    return view('crearP');
-})->name('crearP');
+Route::get('CrearPersona', function () {
+    return view('crearPersona');
+})->name('CrearPersona');
+
+Route::get('simularCredito', function () {
+    return view('simuladorCredito');
+})->name('simularCredito');
+
+Route::get('cambiarContraseña', 'Auth\passwordController@getEmail')->name('cambiarContraseña');
+Route::post('cambiarContraseña', 'Auth\passwordController@postEmail')->name('cambiarContraseña');
+
+Route::get('restablecerContrasena/{token}', 'Auth\passwordController@getReset')->name('restablecerContrasena');
+Route::post('restablecerContrasena', 'Auth\passwordController@postReset')->name('restablecerContrasena');
+
+
 
 
 
