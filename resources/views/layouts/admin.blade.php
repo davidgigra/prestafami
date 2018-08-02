@@ -141,7 +141,7 @@ body {
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="crearP">Crear Perfil</a>
+              <a href="{{Route('CrearPersona')}}">Crear Perfil</a>
             </li>
             <li>
               <a href="cards.html">Actualizar Perfil</a>
@@ -172,9 +172,9 @@ body {
           </li>
 
            <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-          <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-dollar"></i>
-            <span class="nav-link-text">Opciones</span>
+          <a class="nav-link" href="{{Route('cContrasena')}}">
+            <i class="fa fa-fw fa-key"></i>
+            <span class="nav-link-text">Cambiar Contaseña</span>
           </a>
         </li>
 </div>

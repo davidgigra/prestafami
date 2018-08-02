@@ -35,6 +35,9 @@ Route::post('cambiarContraseña', 'Auth\passwordController@postEmail')->name('ca
 Route::get('restablecerContrasena/{token}', 'Auth\passwordController@getReset')->name('restablecerContrasena');
 Route::post('restablecerContrasena', 'Auth\passwordController@postReset')->name('restablecerContrasena');
 
+Route::get('cContrasena', 'cContrasena@getReset')->name('cContrasena');
+Route::post('cContrasena', 'cContrasena@postReset')->name('cContrasena');
+
 
 
 
