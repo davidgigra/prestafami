@@ -14,6 +14,12 @@ class AddDataTable extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('lastName');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('address');
+            $table->string('cedula');
             $table->timestamps();
         });
     }

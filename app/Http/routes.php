@@ -19,11 +19,10 @@ Route::get('/', function () {
 Route::get('login', 'Auth\AuthController@getLogin')->name('login');
 Route::post('login', 'Auth\AuthController@postLogin')->name('login');
 Route::get('logout', 'Auth\AuthController@getLogout')->name('logout');
-Route::get('home', 'HomeController@index')->name('home');
+Route::get('home', 'clientController@index')->name('home');
 
-Route::get('CrearPersona', function () {
-    return view('crearPersona');
-})->name('CrearPersona');
+
+Route::resource('client','clientController');
 
 Route::get('simularCredito', function () {
     return view('simuladorCredito');

@@ -14,54 +14,66 @@
         
         <table id="myTable">
          <tr class="header">
-             <th style="width:20%;">Cedula</th>
-             <th style="width:20%;">Name</th>
-             <th style="width:20%;">Position</th>
-             <th style="width:20%;">Office</th>
-             <th style="width:20%;">Start date</th>
-             <th style="width:20%;">Salary</th>
+             <th style="width:18%;">Cedula</th>
+             <th style="width:18%;">nombre</th>
+             <th style="width:18%;">apellido</th>
+             <th style="width:18%;">telefono</th>
+             <th style="width:18%;">direccion</th>
+             <th style="width:18%;">email</th>
+             <th style="width:10%;">acción</th>
 
               <tfoot>
                 <tr>
                   <th>Cedula</th>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>nombre</th>
+                  <th>apellido</th>
+                  <th>telefono</th>
+                  <th>direccion</th>
+                  <th>email</th>
+                  <th>acción</th>
                 </tr>
               </tfoot>
               <tbody>
              
-                
+              @foreach($clients as $client)
                 <tr>
-                  <td>47</td>
-                  <td>Hermione Butler</td>
-                  <td>Regional Director</td>
-                  <td>London</td>
-                  <td>2011/03/21</td>
-                  <td>$356,250</td>
-                </tr>
-                <tr>
-                  <td>21</td>
-                  <td>Lael Greer</td>
-                  <td>Systems Administrator</td>
-                  <td>London</td>
-                  <td>2009/02/27</td>
-                  <td>$103,500</td>
-                </tr>
-                <tr>
-                  <td>30</td>
-                  <td>Jonas Alexander</td>
-                  <td>Developer</td>
-                  <td>San Francisco</td> 
-                  <td>2010/07/14</td>
-                  <td>$86,500</td>
-                </tr>
+                  <td>{{$client->cedula}}</td>
+                  <td>{{$client->name}}</td>
+                  <td>{{$client->lastName}}</td>
+                  <td>{{$client->phone}}</td>
+                  <td>{{$client->address}}</td>
+                  <td>{{$client->email}}</td>
+                  <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$client->id}}">D</button></td>
+
+                  <!-- Modal Eliminar -->
+                  <div class="modal fade" id="{{$client->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Eliminar Cliente</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          ¿Desea eliminar al usuario {{$client->name." ".$client->lastName}}?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">cancelar</button>
+                          <form method="DELETE" action="{{Route('client.destroy', $client->id)}}">
+                          <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                @endforeach
             
               </tbody>
             </table>
-
+            {!!$clients->render()!!}
           <script>
 function myFunction() {
   var input, filter, table, tr, td, i;

@@ -141,10 +141,10 @@ body {
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="{{Route('CrearPersona')}}">Crear Perfil</a>
+              <a href="{{Route('client.create')}}">Crear Perfil</a>
             </li>
             <li>
-              <a href="cards.html">Actualizar Perfil</a>
+              <a href="{{Route('client.index')}}">Actualizar Perfil</a>
             </li>
             <li>
               <a href="cards.html">Visualizar Perfil</a>

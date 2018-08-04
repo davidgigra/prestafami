@@ -16,7 +16,7 @@ class AddGuarantorsTable extends Migration
             $table->increments('id');
             $table->integer('data_id')->unsigned();
 
-           // $table->foreign('data_id')->references('id')->on('data')->onDelete('cascade');
+            $table->foreign('data_id')->references('id')->on('data')->onDelete('cascade');
 
             $table->timestamps();
         });
