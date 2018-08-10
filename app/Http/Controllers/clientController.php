@@ -27,7 +27,9 @@ class clientController extends Controller
         $clients = DB::table('data')
             ->join('clients', 'data.id', '=', 'clients.data_id')
             ->paginate(3);
-        return view('home')->with('clients',$clients);
+
+        $guarantors = DB::table('guarantors');
+        return view('home')->with('clients',$clients)->with('guarantors',$guarantors);
         
     }
 
@@ -116,7 +118,12 @@ class clientController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        client::destroy($id);
+        return redirect('home');
+    }
+    public function eliminar(Request $id)
+    {
+        client::destroy($id->id);
         return redirect('home');
     }
 }

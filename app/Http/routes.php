@@ -23,6 +23,7 @@ Route::get('home', 'clientController@index')->name('home');
 
 
 Route::resource('client','clientController');
+Route::post('clientdestroy','clientController@eliminar')->name('clientdestroy');
 
 Route::get('simularCredito', function () {
     return view('simuladorCredito');

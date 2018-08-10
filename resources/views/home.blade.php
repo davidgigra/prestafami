@@ -43,7 +43,12 @@
                   <td>{{$client->phone}}</td>
                   <td>{{$client->address}}</td>
                   <td>{{$client->email}}</td>
-                  <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$client->id}}">D</button></td>
+                  <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Visualizar{{$client->id}}">V</button>
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$client->id}}">D</button>
+                    </div>
+                  </td>
 
                   <!-- Modal Eliminar -->
                   <div class="modal fade" id="{{$client->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -60,9 +65,79 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-primary" data-dismiss="modal">cancelar</button>
-                          <form method="DELETE" action="{{Route('client.destroy', $client->id)}}">
+                          <form method="POST" action="{{Route('clientdestroy')}}">
+                            {!! csrf_field() !!}
+                          <input type="hidden" name="id" value="{{ $client->id }}">
                           <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!-- Modal Eliminar -->
+                  <div class="modal fade bd-example-modal-lg" id="Visualizar{{$client->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" >
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Visualizar Cliente</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <div class="form-row">
+                                 <div class="col-md-4">
+                                  <label>Cédula</label>
+                                  <label>{{$client->cedula}}</label>
+                                </div>
+                                 <div class="col-md-3">
+                                  <label >Teléfono</label>
+                                  <label >{{$client->phone}}</label>
+                                </div>
+                                <div class="col-md-8">
+                                  <label >Nombre </label>
+                                  <label >{{$client->name." ".$client->lastName}} </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <div class="form-row">
+                              <div class="col-md-4">
+                              <label ">Email</label>
+                              <label ">{{$client->email}}</label>
+                            </div>
+                          
+                                <div class="col-md-4">
+                                  <label >Direccion de Residencia</label>
+                                  <label >{{$client->address}}</label>
+                                </div>
+                          </div>
+                          </div>
+
+                          <h5>Referencia Personal</h5>
+                           <div class="form-group">
+                              <div class="form-row">           
+                              <div class="col-md-4">
+                              <label >Nombre Completo </label>
+                              <label ></label>
+                            </div>
+                                <div class="col-md-4">
+                                  <label >Apellidos</label>
+                                  <input class="form-control" name="guarantorLastName" type="text" >
+                                </div>
+
+                                <div class="col-md-3">
+                                  <label>Teléfono</label>
+                                  <input class="form-control" name="guarantorPhone" type="text" >
+                                </div>
+                          </div>
+                          </div>
+                          </form>
                         </div>
                       </div>
                     </div>
