@@ -47,6 +47,7 @@
                     <div class="btn-group" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Visualizar{{$client->id}}">V</button>
                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$client->id}}">D</button>
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Editar{{$client->id}}">E</button>
                     </div>
                   </td>
 
@@ -76,7 +77,7 @@
                   </div>
 
 
-                  <!-- Modal Eliminar -->
+                  <!-- Modal vizualizar -->
                   <div class="modal fade bd-example-modal-lg" id="Visualizar{{$client->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
@@ -124,28 +125,109 @@
                               <div class="form-row">           
                               <div class="col-md-4">
                               <label >Nombre Completo </label>
-                              <label ></label>
+                              @foreach($guarantors as $guarantor)
+                                @if($guarantor->id == $client->guarantor_id)
+                              <label >{{$guarantor->name}}</label>
                             </div>
                                 <div class="col-md-4">
                                   <label >Apellidos</label>
-                                  <input class="form-control" name="guarantorLastName" type="text" >
+                                  <label >{{$guarantor->lastName}}</label>
                                 </div>
 
                                 <div class="col-md-3">
                                   <label>Teléfono</label>
-                                  <input class="form-control" name="guarantorPhone" type="text" >
+                                  <label >{{$guarantor->phone}}</label>
                                 </div>
+                                @endif
+                              @endforeach
                           </div>
                           </div>
                           </form>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div>   
+                
+                <!-- Modal Editar -->
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="Editar{{$client->id}}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Editar cliente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form method="POST" action="{{ route('clientupdate') }}">
+                        {!! csrf_field() !!}
+                        <input type="hidden" name="id" value="{{ $client->id }}">
+                        <div class="form-group">
+                          <div class="form-row">
+                             <div class="col-md-7">
+                              <label>Cédula</label>
+                              <input class="form-control" type="text" name="cedula" value="{{$client->cedula}}">
+                            </div>
+                             <div class="col-md-5">
+                              <label >Teléfono</label>
+                              <input class="form-control" type="text" name="phone" value="{{$client->phone}}">
+                            </div>
+                            <div class="col-md-6">
+                              <label >Nombre</label>
+                              <input class="form-control"  type="text" name="name" value="{{$client->name}}">
+                            </div>
+                            <div class="col-md-6">
+                              <label >Apellidos</label>
+                              <input class="form-control" type="text"  name="lastName"  value="{{$client->lastName}}">
+                            </div>
+                          </div>
+                        </div>
 
-                  
-                @endforeach
-            
+                        <div class="form-group">
+                          <div class="form-row">
+                          <div class="col-md-4">
+                          <label ">Email</label>
+                          <input class="form-control" name="email" type="email" value="{{$client->email}}"> 
+                        </div>
+                      
+                            <div class="col-md-4">
+                              <label >Direccion de Residencia</label>
+                              <input class="form-control" name="address" type="text" value="{{$client->address}}">
+                            </div>
+                      </div>
+                      </div>
+                      @foreach($guarantors as $guarantor)
+                        @if($guarantor->id == $client->guarantor_id)
+                        <h5>Referencia Personal</h5>
+                       <div class="form-group">
+                          <div class="form-row">           
+                          <div class="col-md-4">
+                          <label >Nombre Completo </label>
+                          <input class="form-control" name="guarantorName" type="text" value="{{$guarantor->name}}" >
+                        </div>
+
+                            <div class="col-md-4">
+                              <label >Apellidos</label>
+                              <input class="form-control" name="guarantorLastName" type="text" value="{{$guarantor->lastName}}">
+                            </div>
+
+                            <div class="col-md-3">
+                              <label>Teléfono</label>
+                              <input class="form-control" name="guarantorPhone" type="text"  value="{{$guarantor->phone}}">
+                            </div>
+                          </div>
+                      </div>
+                      </div>
+                        @endif
+                      @endforeach
+                    
+                        <button class="btn btn-primary" type="submit" >Registrar</button>
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
               </tbody>
             </table>
             {!!$clients->render()!!}

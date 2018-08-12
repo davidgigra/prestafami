@@ -28,7 +28,9 @@ class clientController extends Controller
             ->join('clients', 'data.id', '=', 'clients.data_id')
             ->paginate(3);
 
-        $guarantors = DB::table('guarantors');
+        $guarantors = DB::table('data')
+        ->join('guarantors', 'data.id', '=', 'guarantors.data_id')
+        ->get();
         return view('home')->with('clients',$clients)->with('guarantors',$guarantors);
         
     }
@@ -107,7 +109,31 @@ class clientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd('$request');
+        /*
+        $client = new client();
+        $guarantor = new guarantor();
+        $dataClient = new data();
+        $dataGuarantor = new data();
+        $dataClient->cedula = $request->cedula;
+        $dataClient->name = $request->name;
+        $dataClient->lastName = $request->lastName;
+        $dataClient->phone = $request->phone;
+        $dataClient->email = $request->email;
+        $dataClient->address = $request->address;
+        $dataGuarantor->name = $request->guarantorName;
+        $dataGuarantor->lastName = $request->guarantorLastName;
+        $dataGuarantor->phone = $request->guarantorPhone;
+        $dataClient->save();
+        $dataGuarantor->save();
+        $client->data_id=$dataClient->id;
+        $guarantor->data_id=$dataGuarantor->id;
+        $client->wallet_id=1;
+        $guarantor->save();
+        $client->guarantor_id=$guarantor->id;
+        $client->save();
+        return redirect('home');
+        */
     }
 
     /**
@@ -124,6 +150,27 @@ class clientController extends Controller
     public function eliminar(Request $id)
     {
         client::destroy($id->id);
+        return redirect('home');
+    }
+
+    public function actualizar(Request $request)
+    {   
+        $client = client::find($request->id);
+        $guarantor = guarantor::find($client->guarantor_id);
+        $dataClient = data::find($client->data_id);
+        $dataGuarantor = data::find($guarantor->data_id);
+        $dataClient->cedula = $request->cedula;
+        $dataClient->name = $request->name;
+        $dataClient->lastName = $request->lastName;
+        $dataClient->phone = $request->phone;
+        $dataClient->email = $request->email;
+        $dataClient->address = $request->address;
+        $dataGuarantor->name = $request->guarantorName;
+        $dataGuarantor->lastName = $request->guarantorLastName;
+        $dataGuarantor->phone = $request->guarantorPhone;
+        $dataClient->save();
+        $dataGuarantor->save();
+        $guarantor->save();
         return redirect('home');
     }
 }
