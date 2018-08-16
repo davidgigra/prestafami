@@ -36,8 +36,7 @@ body {
 
 </style>
 
-<br>
-<br>
+
 <body class="bg-dark">
 <div class="container">
     <div class="card card-register mx-auto mt-5">

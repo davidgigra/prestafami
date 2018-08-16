@@ -48,6 +48,7 @@
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Visualizar{{$client->id}}">V</button>
                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$client->id}}">D</button>
                       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Editar{{$client->id}}">E</button>
+                      <a type="button" class="btn btn-success" href="">P</a>
                     </div>
                   </td>
 

@@ -116,40 +116,21 @@ body {
           </a>
         </li>
   <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-          <a href="simuladorC">
+          <a href="{{Route('simularCredito')}}" style="text-decoration:none">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">Simular Credito</span>
           </a>
-        </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-          <a class="nav-link" href="tables.html">
-            <i class="fa fa-fw fa-dollar"></i>
-            <span class="nav-link-text">Añadir Prestamo</span>
-          </a>
-        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" >
           <a class="nav-link" href="tables.html">
             <i class="fa fa-fw fa-dollar"></i>
             <span class="nav-link-text">Pago De Prestamo</span>
           </a>
         </li>
-
         <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <a class="nav-link" href="{{Route('client.create')}}">
             <i class="fa fa-fw fa-address-book-o"></i>
-            <span class="nav-link-text">Cliente</span>
+            <span class="nav-link-text">Crear Cliente</span>
           </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="{{Route('client.create')}}">Crear Perfil</a>
-            </li>
-            <li>
-              <a href="{{Route('client.index')}}">Actualizar Perfil</a>
-            </li>
-            <li>
-              <a href="cards.html">Visualizar Perfil</a>
-            </li>
-          </ul>
         </li>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
