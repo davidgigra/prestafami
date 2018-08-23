@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+
 <style>
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -34,9 +35,18 @@ body {
     padding:20px 20px 20px 20px;
     }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
 </style>
 
-
+<br>
+<br>
 <body class="bg-dark">
 <div class="container">
     <div class="card card-register mx-auto mt-5">
@@ -46,7 +56,7 @@ body {
 
   <ol class="breadcrumb badge-light">
   <li class="breadcrumb-item  ">
-  <a href="home">Inicio</a></li>
+  <a href="{{Route('home')}}">Inicio</a></li>
   <li class="breadcrumb-item active">Registro De Cliente</li>
   </ol>
 
@@ -55,55 +65,49 @@ body {
           {!! csrf_field() !!}
           <div class="form-group">
             <div class="form-row">
-               <div class="col-md-4">
+               <div class="col-md-3">
                 <label>Cédula</label>
-                <input class="form-control" type="text" name="cedula">
+                <input class="form-control" type="number" min="100"  name="cedula"  required=""  oninvalid="setCustomValidity('Debe Contener Min 8 Caracteres')"oninput="setCustomValidity('')"/><br /><br />>
+
               </div>
                <div class="col-md-3">
                 <label >Teléfono</label>
-                <input class="form-control" type="text" name="phone">
+                <input class="form-control" type="number"  name="phone"  required="">
               </div>
-              <div class="col-md-8">
+              <div class="col-md-3">
                 <label >Nombre Completo</label>
-                <input class="form-control"  type="text" name="name" >
+                <input class="form-control"  type="text" name="name" required="">
               </div>
-              </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label >Apellidos</label>
-                <input class="form-control" type="text"  name="lastName">
+                <input class="form-control" type="text"  name="lastName" required="">
+              </div>
+            <div class="col-md-3">
+                <label ">Email</label>
+                <input class="form-control" name="email" type="email" required="">
+            </div>
+            <div class="col-md-3">
+                <label >Direccion de Residencia</label>
+                <input class="form-control" name="address" type="text" required="">
               </div>
             </div>
           </div>
-
-          <div class="form-group">
-            <div class="form-row">
-            <div class="col-md-4">
-            <label ">Email</label>
-            <input class="form-control" name="email" type="email"  >
-          </div>
         
-              <div class="col-md-4">
-                <label >Direccion de Residencia</label>
-                <input class="form-control" name="address" type="text" >
-              </div>
-        </div>
-        </div>
-
         <h5>Referencia Personal</h5>
          <div class="form-group">
             <div class="form-row">           
-            <div class="col-md-4">
+            <div class="col-md-3">
             <label >Nombre Completo </label>
-            <input class="form-control" name="guarantorName" type="text"  >
+            <input class="form-control" name="guarantorName" type="text" required="" >
           </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <label >Apellidos</label>
-                <input class="form-control" name="guarantorLastName" type="text" >
+                <input class="form-control" name="guarantorLastName" type="text" required="">
               </div>
 
               <div class="col-md-3">
                 <label>Teléfono</label>
-                <input class="form-control" name="guarantorPhone" type="text" >
+                <input class="form-control" name="guarantorPhone" type="number" required="">
               </div>
         </div>
         </div>

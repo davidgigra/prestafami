@@ -10,27 +10,33 @@
           <a href="home">Inicio</a></li>
         </ol> 
   
-        <input type="text" class="form-control col-md-3" id="myInput" onkeyup="myFunction()" placeholder="Buscar Clientes...">
-        
-        <table id="myTable">
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <div class="input-group-text" id="btnGroupAddon"><i class="fa fa-search fa-lg"></i></div>
+    </div>
+    <input type="text" class="form-control col-md-3 " id="myInput" onkeyup="myFunction()" placeholder="Buscar Clientes..." >
+  </div>
+</div>
+
+         <table class= "table" id="myTable">
          <tr class="header">
-             <th style="width:18%;">Cedula</th>
-             <th style="width:18%;">nombre</th>
-             <th style="width:18%;">apellido</th>
-             <th style="width:18%;">telefono</th>
-             <th style="width:18%;">direccion</th>
-             <th style="width:18%;">email</th>
-             <th style="width:10%;">acción</th>
+             <th style="width:15%;">Cédula</th>
+             <th style="width:15%;">Nombre</th>
+             <th style="width:15%;">Apellido</th>
+             <th style="width:15%;">Teléfono</th>
+             <th style="width:18%;">E-mail</th>
+             <th style="width:15%;">Dirección</th>
+             <th style="width:15%;">Acción</th>
 
               <tfoot>
                 <tr>
-                  <th>Cedula</th>
-                  <th>nombre</th>
-                  <th>apellido</th>
-                  <th>telefono</th>
-                  <th>direccion</th>
-                  <th>email</th>
-                  <th>acción</th>
+                  <th>Cédula</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Teléfono</th>
+                  <th>E-mail</th>
+                  <th>Dirección</th>
+                  <th>Acción</th>
                 </tr>
               </tfoot>
               <tbody>
@@ -41,14 +47,17 @@
                   <td>{{$client->name}}</td>
                   <td>{{$client->lastName}}</td>
                   <td>{{$client->phone}}</td>
-                  <td>{{$client->address}}</td>
                   <td>{{$client->email}}</td>
+                  <td>{{$client->address}}</td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Visualizar{{$client->id}}">V</button>
-                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$client->id}}">D</button>
-                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Editar{{$client->id}}">E</button>
-                      <a type="button" class="btn btn-success" href="">P</a>
+                     
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Visualiza{{$client->id}}"><i class="fa fa-tripadvisor fa-lg"></i></button>
+                      
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$client->id}}"> <i class="fa fa-trash-o fa-lg"></i></button>
+
+                      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Editar{{$client->id}}"><i class="fa fa-pencil-square-o fa-lg"></i></button>
+                      
                     </div>
                   </td>
 
@@ -57,6 +66,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
+                          <i class="fa fa-spinner fa-pulse fa-lg fa-fw"></i>
                           <h5 class="modal-title" id="exampleModalCenterTitle">Eliminar Cliente</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -77,68 +87,93 @@
                     </div>
                   </div>
 
+<style>
+.modal-content{font:normal 15px/15px verdana;
+    heigth:500px;
+    padding:30px 30px 30px 30px;
+    }
 
-                  <!-- Modal vizualizar -->
-                  <div class="modal fade bd-example-modal-lg" id="Visualizar{{$client->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
+
+ <!-- Modal Visualizar -->
+                  <div class="modal fade bd-example-modal-fa-5x" id="Visualiza{{$client->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
-                        <div class="modal-header" >
-                          <h5 class="modal-title" id="exampleModalCenterTitle">Visualizar Cliente</h5>
+                        <div class="modal-header badge-light" >
+                          <h5 class="modal-title " id="exampleModalCenterTitle">Visualizar Cliente</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
                         <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-                              <div class="form-row">
-                                 <div class="col-md-4">
-                                  <label>Cédula</label>
-                                  <label>{{$client->cedula}}</label>
-                                </div>
-                                 <div class="col-md-3">
-                                  <label >Teléfono</label>
-                                  <label >{{$client->phone}}</label>
-                                </div>
-                                <div class="col-md-8">
-                                  <label >Nombre </label>
-                                  <label >{{$client->name." ".$client->lastName}} </label>
-                                </div>
-                              </div>
-                            </div>
+                        <body class="bg-dark">
+                        <div class="container">
+                                  <div class="form-group">
+                                    <div class="form-row">
+                                       <div class="col-md-5">
+                                        <label>Cédula</label>
+                                        <input class="form-control" placeholder="{{$client->cedula}}" disabled>
+                                        </div>
 
-                            <div class="form-group">
-                              <div class="form-row">
-                              <div class="col-md-4">
-                              <label ">Email</label>
-                              <label ">{{$client->email}}</label>
-                            </div>
-                          
-                                <div class="col-md-4">
-                                  <label >Direccion de Residencia</label>
-                                  <label >{{$client->address}}</label>
-                                </div>
-                          </div>
-                          </div>
+                                       <div class="col-md-5">
+                                        <label >Teléfono</label>
+                                        <input class="form-control" placeholder="{{$client->phone}}"disabled>
+                                        <br><br/>
+                                      </div>
+
+                                      <div class="col-md-8">
+                                        <label >Nombre Completo</label>
+                                        <input class="form-control"  placeholder="{{$client->name.' '.$client->lastName}}"disabled>
+                                        <br><br/>
+                                      </div>
+                                      
+                                    <br><div class="col-md-8">
+                                        <label ">Email</label>
+                                        <input class="form-control" placeholder="{{$client->email}}"disabled>
+                                        <br><br/>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <label >Direccion de Residencia</label>
+                                        <input class="form-control" placeholder="{{$client->address}}"disabled>
+                                      </div>
+                                    </div>
+                                  </div>
+                                
 
                           <h5>Referencia Personal</h5>
                            <div class="form-group">
                               <div class="form-row">           
-                              <div class="col-md-4">
+                              <div class="col-md-8">
                               <label >Nombre Completo </label>
                               @foreach($guarantors as $guarantor)
                                 @if($guarantor->id == $client->guarantor_id)
-                              <label >{{$guarantor->name}}</label>
+                              <input class="form-control" placeholder="{{$guarantor->name}}"disabled>
+                              <br><br/>
                             </div>
-                                <div class="col-md-4">
-                                  <label >Apellidos</label>
-                                  <label >{{$guarantor->lastName}}</label>
-                                </div>
 
-                                <div class="col-md-3">
-                                  <label>Teléfono</label>
-                                  <label >{{$guarantor->phone}}</label>
-                                </div>
+                            <div class="col-md-5">
+                              <label>Teléfono</label>
+                              <input class="form-control" placeholder="{{$guarantor->phone}}"disabled>
+                              <br><br/>
+                            </div>
                                 @endif
                               @endforeach
                           </div>
@@ -150,16 +185,20 @@
                   </div>   
                 
                 <!-- Modal Editar -->
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="Editar{{$client->id}}">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Editar cliente</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
+                
+                    <div class="modal fade bd-example-modal-fa-lg" id="Editar{{$client->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header " >
+                          <h5 class="modal-title " id="exampleModalCenterTitle">Editar cliente</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                       </div>
                       <div class="modal-body">
+                            <div class="form-group">
+                              <div class="form-row">
+                                 <div class="col-md-4">
                         <form method="POST" action="{{ route('clientupdate') }}">
                         {!! csrf_field() !!}
                         <input type="hidden" name="id" value="{{ $client->id }}">
@@ -215,7 +254,7 @@
                             <div class="col-md-3">
                               <label>Teléfono</label>
                               <input class="form-control" name="guarantorPhone" type="text"  value="{{$guarantor->phone}}">
-                            </div>
+                             </div>
                           </div>
                       </div>
                       </div>
@@ -230,8 +269,11 @@
                 </div>
               @endforeach
               </tbody>
+
+              <div> {!! $clients->render() !!} </div>
+              
             </table>
-            {!!$clients->render()!!}
+            
           <script>
 function myFunction() {
   var input, filter, table, tr, td, i;
@@ -269,6 +311,45 @@ function myFunction() {
           </script>
 
 </div>
+
+
+<div class="card-body">
+    <div class="row">
+      <div class="col-sm-12 col-md-7">
+        <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+          <ul class="pagination">
+            <li class="paginate_button page-item previous disabled" id="dataTable_previous">
+              <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+
+              <li class="paginate_button page-item active">
+                <a href="{{ route('client.store') }} " aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link" >1</a>
+
+              </li><li class="paginate_button page-item ">
+                <a href="{{ route('client.store') }}" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+
+              </li><li class="paginate_button page-item ">
+                <a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+
+              <li class="paginate_button page-item ">
+                <a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
+
+              <li class="paginate_button page-item ">
+                <a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
+
+              <li class="paginate_button page-item ">
+                <a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
+                
+              <li class="paginate_button page-item next" id="dataTable_next">
+                <a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
          <footer class="sticky-footer">
       <div class="container bg-light">
         <div class="text-center">
