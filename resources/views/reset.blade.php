@@ -2,6 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="shortcut icon" href="assets/images/6c77d735f6558be69975bf428f536fd2-60x80-1-60x58.jpg" type="image/x-icon">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

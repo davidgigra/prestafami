@@ -146,8 +146,10 @@
                     </div>
                 </div>
 
-                  
-                    <form class="block mbr-form" action="enviar2.php" method="POST" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true"  data-form-field="Email">
+                 <div data-form-type="formoid">
+                    <div data-form-alert="" hidden="">¡Gracias Por Completar El Formulario!</div>
+                    <form class="block mbr-form" action="enviar2.php" method="POST" data-form-title="Mobirise Form">
+                      <input type="hidden" name="email" data-form-email="true"  data-form-field="Email">
                         <div class="row">
                             <div class="col-md-6 multi-horizontal" data-for="name">
                                 <input type="text" class="form-control input" name="nombre" data-form-field="Name" placeholder="Nombre" required="" id="name-form4-e">

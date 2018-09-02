@@ -1,65 +1,23 @@
 <?php
-//Comprobamos que se haya presionado el boton enviar
-if(isset($_POST['enviar'])){
-//Guardamos en variables los datos enviados
 $nombre = $_POST['nombre'];
-$email = $_POST['email'];
-$telefono = $_POST['telefono'];
+$mail = $_POST['email'];
+$mail = $_POST['telefono'];
 $mensaje = $_POST['mensaje'];
- 
-///Validamos del lado del servidor que el nombre y el email no estén vacios
-if($nombre == ''){
-echo "camilo619@utp.edu.co";
-}
-else if($email == ''){
-echo "camilo619@utp.edu.co";
-}else{
-$para = "camilo619@utp.edu.co";//Email al que se enviará
-$asunto = "Informacion PrestaFami";//Puedes cambiar el asunto del mensaje desde aqui
-//Este sería el cuerpo del mensaje
-$mensaje = "
-<table border='0' cellspacing='3' cellpadding='2'>
-<tr>
-<td width='30%' align='left' bgcolor='#f0efef'><strong>Nombre:</strong></td>
-<td width='80%' align='left'>$nombre</td>
-</tr>
-<tr>
-<td align='left' bgcolor='#f0efef'><strong>E-mail:</strong></td>
-<td align='left'>$email</td>
-</tr>
-<tr>
-<td width='30%' align='left' bgcolor='#f0efef'><strong>Teléfono:</strong></td>
-<td width='70%' align='left'>$telefono</td>
-</tr>
-<tr>
-<td width='30%' align='left' bgcolor='#f0efef'><strong>Ciudad:</strong></td>
-<td width='70%' align='left'>$ciudad</td>
-</tr>
-<tr>
-<td width='30%' align='left' bgcolor='#f0efef'><strong>País:</strong></td>
-<td width='70%' align='left'>$pais</td>
-</tr>
-<tr>
-<td align='left' bgcolor='#f0efef'><strong>Comentario:</strong></td>
-<td align='left'>$mensaje</td>
-</tr>
-</table>
-";
- 
-//Cabeceras del correo
-$headers = "From: $nombre <$email>\r\n"; //Quien envia?
-$headers .= "X-Mailer: PHP5\n";
-$headers .= 'MIME-Version: 1.0' . "\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; //
- 
-//Comprobamos que los datos enviados a la función MAIL de PHP estén bien y si es correcto enviamos
-if(mail($para, $asunto, $mensaje, $headers)){
-echo "Su mensaje se ha enviado correctamente";
-echo "<br />";
-echo '<a href="../formulario_contacto.html">Volver</a>';
-}else{
-echo "Hubo un error en el envío inténtelo más tarde";
-}
-}
-}
+
+$header = 'From: ' . $mail . " \r\n";
+$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+$header .= "Mime-Version: 1.0 \r\n";
+$header .= "Content-Type: text/plain";
+
+$mensaje = "Este Nensaje Fue Enviado Por: " . $nombre . ",\r\n";
+$mensaje .= "Su E-mail es: " . $mail . " \r\n";
+$mensaje .= "Mensaje: " . $_POST['mensaje'] . " \r\n";
+$mensaje .= "Enviado el: " . date('d/m/Y', time());
+
+$para = 'camilo61@utp.edu..co';
+$asunto = 'Información PrestaFami';
+
+mail($para, $asunto, utf8_decode($mensaje), $header);
+
+header("Location: /");
 ?>

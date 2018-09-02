@@ -24,6 +24,7 @@ class clientController extends Controller
      */
     public function index()
     {   
+        
         $clients = DB::table('data')
             ->join('clients', 'data.id', '=', 'clients.data_id')
             ->paginate(3);
@@ -32,8 +33,10 @@ class clientController extends Controller
         ->join('guarantors', 'data.id', '=', 'guarantors.data_id')
         ->get();
         return view('home')->with('clients',$clients)->with('guarantors',$guarantors);
-        
+    
     }
+
+
 
     /**
      * Show the form for creating a new resource.

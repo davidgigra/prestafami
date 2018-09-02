@@ -3,24 +3,59 @@
 @extends('layouts.app')
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="shortcut icon" href="assets/images/6c77d735f6558be69975bf428f536fd2-60x80-1-60x58.jpg" type="image/x-icon">
   <title>PrestaFami</title>
 
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link href="css/sb-admin.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link href="estilos.css" rel="stylesheet" type="text/css">
+  <link rel="STYLESHEET" type="text/css" href="estilo.css"> 
+  <link rel="STYLESHEET" type="text/css" href="estilo_imprimir.css" media="print"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
 
 </head>
 <style>
 body {
     font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+    font-size: 20px;
 }
 
-  
+
+    #elementoaocultar {
+    visibility: hidden;
+    overflow: hidden;
+    width: 0px;
+    height: 0px;
+    }
+
+    @media print {
+    a:link, a:visited {
+    text-decoration: none;
+    color: black;
+    }}
+
+
+.card-header{font:normal 20px/20px verdana;
+    heigth:10px;
+    text-align:center;
+    position:center;
+    padding:20px 20px 20px 20px;
+    }
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
 
 #myBtn {
   display: none;
@@ -29,18 +64,16 @@ body {
   right: 30px;
   z-index: 99;
   font-size: 18px;
-  border: none;
-  outline: none;
-  background-color: red;
+  background-color: black;
   color: white;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 4px;
+  padding: 8px;
+  border-radius: 15px;
 }
 
 #myBtn:hover {
   background-color: #555;
 }
+
 
 .sidenav {
     height: 100%;
@@ -49,7 +82,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(0, 0, 0);
+    background-color: #212529;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -70,7 +103,7 @@ body {
     color: #ffffff;
   }
 .table-responsive{
-    padding: 130px 130px 310px 15px;
+    padding: 100px 10px 310px 15px;
     
     font-size: 18px;
     color: #000f00;
@@ -94,7 +127,18 @@ body {
 }
 
 
+.modal-content{font:normal 15px/15px verdana;
+    heigth:500px;
+    padding:30px 30px 30px 30px;
+    }
+
 </style>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="modal"]').tooltip();   
+});
+</script>
 
 
 
@@ -117,13 +161,13 @@ body {
         </li>
   <li class="nav-item" data-toggle="tooltip" data-placement="right" >
           <a href="{{Route('simularCredito')}}" style="text-decoration:none">
-            <i class="fa fa-fw fa-dollar"></i>
+            <i class="fa fa-handshake-o"></i>
             <span class="nav-link-text">Simular Credito</span>
           </a>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" >
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="{{Route('prestamo')}}">
             <i class="fa fa-fw fa-dollar"></i>
-            <span class="nav-link-text">Pago De Prestamo</span>
+            <span class="nav-link-text">Prestamo</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" >
@@ -140,10 +184,10 @@ body {
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
             <li>
-              <a href="{{ route('home') }} ">Quincenal</a>
+              <a href="{{Route('infoHasta')}}" >Informe De Cobros Hasta</a>
             </li>
             <li>
-              <a href="register.html">Mensual</a>
+              <a href="register.html">Informe De Cuotas Vencidas</a>
             </li>
             
             <li>

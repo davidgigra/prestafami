@@ -22,6 +22,7 @@ Route::get('logout', 'Auth\AuthController@getLogout')->name('logout');
 Route::get('home', 'clientController@index')->name('home');
 
 
+
 Route::resource('client','clientController');
 Route::post('clientdestroy','clientController@eliminar')->name('clientdestroy');
 Route::post('clientupdate','clientController@actualizar')->name('clientupdate');
@@ -30,6 +31,12 @@ Route::post('clientupdate','clientController@actualizar')->name('clientupdate');
 Route::get('simularCredito', function () {
     return view('simuladorCredito');
 })->name('simularCredito');
+
+Route::get('infoHasta', function () {
+    return view('infoHasta');
+})->name('infoHasta');
+
+Route::get('prestamo', 'PrestController@index')->name('prestamo');
 
 Route::get('cambiarContraseña', 'Auth\passwordController@getEmail')->name('cambiarContraseña');
 Route::post('cambiarContraseña', 'Auth\passwordController@postEmail')->name('cambiarContraseña');
